@@ -1,0 +1,18 @@
+name: Health Check
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Every day at 6AM UTC
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check health of deployed app
+        uses: jtalk/url-health-check-action@v4
+        with:
+          url: 'https://fso-part11-ci-phonebook.onrender.com/health'
+          max-attempts: 3
+          retry-delay: 5s
