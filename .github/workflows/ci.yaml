@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   test:
@@ -34,4 +34,4 @@ jobs:
         run: echo "MONGODB_URI=mongodb://localhost:27017/test" > .env
 
       - name: Run tests
-        run: pnpm test -- --runInBand
+        run: pnpm test
